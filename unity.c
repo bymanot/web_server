@@ -1,0 +1,5 @@
+#include "src/config.c"
+#include "src/input_output.c"
+#include "src/server.c"
+#include "src/http.c"
+#include "src/util.c"
