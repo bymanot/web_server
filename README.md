@@ -8,6 +8,7 @@
 
 - Clone the repo and run a make command (make, make run, make release)
 - The binary will build to src/app (for a debug build or src/app_release for a release build)
+- The server listens 0.0.0.0:8080 by default, but can be changed from header/config.h
 
 ## Features
 
