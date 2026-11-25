@@ -74,8 +74,7 @@ int http_response_create(struct HttpResponse* response, struct HttpRequest* requ
     }
 
     char path_buffer[128];
-    int file_path_exit_code = file_path_from_url(request->path, path_buffer);
-    if (file_path_exit_code < 0) {
+    if (file_path_from_url(request->path, path_buffer) < 0) {
         response->code = CODE_404;
         return 0;
     }
@@ -96,9 +95,8 @@ int http_response_create(struct HttpResponse* response, struct HttpRequest* requ
         return -1;
     }
 
-    int get_file_exit_code = get_file_data(response->content,
-            response->content_length, path_buffer);
-    if (get_file_exit_code < 0) {
+    if (get_file_data(response->content,
+            response->content_length, path_buffer) < 0) {
         free(response->content);
         return -1;
     }
@@ -131,15 +129,13 @@ int response_serialize_and_send(struct HttpResponse* response) {
         response->content_length
     );
 
-    int send_header_exit = send_data(response->fd, header, header_length);
-    if (send_header_exit < 0) {
+    if (send_data(response->fd, header, header_length) < 0) {
         return -1;
     }
 
     if (response->content_length) {
-        int send_content_exit = send_data(response->fd, response->content,
-                response->content_length);
-        if (send_content_exit < 0) {
+        if (send_data(response->fd, response->content,
+                response->content_length) < 0) {
             return -1;
         }
     }

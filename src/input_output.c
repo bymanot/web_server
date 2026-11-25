@@ -39,8 +39,7 @@ int socket_initialize() {
     }
 
     int backlog = 4;
-    int listen_return = listen(fd, backlog);
-    if (listen_return < 0) {
+    if (listen(fd, backlog) < 0) {
         perror("listen");
         EXIT_ERROR("^");
     }

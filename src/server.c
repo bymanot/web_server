@@ -1,17 +1,14 @@
 #include <arpa/inet.h>
-#include <stdlib.h>
 #include <netinet/in.h>
-#include <string.h>
 #include <sys/socket.h>
 #include <unistd.h>
 #include <stdio.h>
 
-#include "input_output.h"
 #include "http.h"
+#include "input_output.h"
 #include "util.h"
 
 int main() {
-
     int fd = socket_initialize();
 
     struct sockaddr_in client_address;
@@ -42,8 +39,7 @@ int main() {
                 request.method, request.path, request.version);
         
         struct HttpResponse response;
-        int response_exit = http_response_create(&response, &request);
-        if (response_exit < 0) {
+        if (http_response_create(&response, &request) < 0) {
             EXIT_ERROR("^");
         }
 
