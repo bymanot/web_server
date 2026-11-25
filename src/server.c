@@ -11,17 +11,6 @@
 #include "input_output.h"
 #include "util.h"
 
-/*
-    TODO:
-    - Set socket SO_REUSEADDR option with setsockopt
-    - Check, which functions actually need to communicate errors
-
-    ROADMAP:
-    - Improve memory management so that it's efficient and scaleable
-    - Cache recent accessed files to a circular buffer or something
-    - Moving to lower level apis e.g. for file handling because handrolling stuff is fun
-*/
-
 int main() {
     int fd = socket(AF_INET, SOCK_STREAM, 0);
     if (fd == -1) {
