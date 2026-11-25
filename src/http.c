@@ -1,9 +1,10 @@
-#include <sys/socket.h>
 #include <string.h>
-#include "http.h"
-#include "util.h"
+#include <sys/socket.h>
+
 #include "config.h"
+#include "http.h"
 #include "input_output.h"
+#include "util.h"
 
 int request_deserialize(struct HttpRequest* request, int fd_request) {
     request->fd = fd_request;
