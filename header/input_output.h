@@ -1,5 +1,8 @@
 #pragma once
 
+// Creates and binds the socket
+int socket_initialize();
+
 // On failure errno is set by stat and zero is returned
 size_t get_file_size(const char*);
 

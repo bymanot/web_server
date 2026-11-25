@@ -6,10 +6,9 @@
 #include <unistd.h>
 #include <stdio.h>
 
+#include "input_output.h"
 #include "http.h"
 #include "util.h"
-
-int socket_initialize();
 
 int main() {
 
